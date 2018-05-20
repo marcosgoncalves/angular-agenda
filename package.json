@@ -9,17 +9,19 @@
     "url": "git@github.com:marcosgoncalves/angular-agenda.git"
   },
   "devDependencies": {
-    "grunt": "^1.0.2",
-    "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-jshint": "^1.1.0",
-    "grunt-contrib-nodeunit": "^2.0.0",
-    "grunt-contrib-uglify": "^3.3.0",
-    "grunt-contrib-watch": "^1.1.0",
-    "grunt-dev-update": "^2.3.0",
-    "grunt-exec": "^3.0.0",
-    "grunt-jsdoc": "^2.2.1",
-    "grunt-karma": "^2.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-cache": "^1.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-jshint": "^2.1.0",
+    "gulp-karma": "0.0.5",
+    "gulp-livereload": "^3.8.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-notify": "^3.2.0",
+    "gulp-ruby-sass": "^3.0.0",
+    "gulp-uglify": "^3.0.0",
     "jasmine-core": "^3.1.0",
     "karma": "^2.0.2",
     "karma-jasmine": "^1.1.2",
@@ -28,6 +30,8 @@
   },
   "scripts": {
     "postinstall": "bower install",
-    "test": "grunt build"
+    "test": "gulp test"
+  },
+  "dependencies": {
   }
 }
