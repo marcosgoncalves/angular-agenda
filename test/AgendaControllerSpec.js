@@ -1,8 +1,8 @@
-describe('ExampleController', function() {
+describe('AgendaController', function() {
     var scope, controller, httpBackend;
 
     // Initialization of the AngularJS application before each test case
-    beforeEach(module('ExampleApp'));
+    beforeEach(module('AgendaApp'));
 
     // Injection of dependencies, $http will be mocked with $httpBackend
     beforeEach(inject(function($rootScope, $controller, $httpBackend) {
@@ -17,7 +17,7 @@ describe('ExampleController', function() {
         httpBackend.expectGET('/users').respond('[{"name": "First User"}, {"name": "Second User"}]');
 
         // Starting the controller
-        controller('ExampleController', {'$scope': scope });
+        controller('AgendaController', {'$scope': scope });
 
         // Respond to all HTTP requests
         httpBackend.flush();
