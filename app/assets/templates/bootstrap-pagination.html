@@ -1,0 +1,28 @@
+<li class="page-item" role="menuitem" ng-if="::boundaryLinks" ng-class="{disabled: noPrevious()||ngDisabled}" class="pagination-first"
+    data-toggle="tooltip" title="primeira">
+	<a class="page-link" href ng-click="selectPage(1, $event)" ng-disabled="noPrevious()||ngDisabled" uib-tabindex-toggle>
+		<span class="glyphicon glyphicon-step-backward"></span>
+	</a>
+</li>
+<li class="page-item" role="menuitem" ng-if="::directionLinks" ng-class="{disabled: noPrevious()||ngDisabled}" class="pagination-prev"
+    data-toggle="tooltip" title="anterior">
+	<a class="page-link" href ng-click="selectPage(page - 1, $event)" ng-disabled="noPrevious()||ngDisabled" uib-tabindex-toggle>
+		<span class="glyphicon glyphicon-chevron-left"></span>
+	</a>
+</li>
+<li class="page-item" role="menuitem" ng-repeat="page in pages track by $index" ng-class="{active: page.active,disabled: ngDisabled&&!page.active}"
+    class="pagination-page">
+	<a class="page-link" href ng-click="selectPage(page.number, $event)" ng-disabled="ngDisabled&&!page.active" uib-tabindex-toggle>{{page.text}}</a>
+</li>
+<li class="page-item" role="menuitem" ng-if="::directionLinks" ng-class="{disabled: noNext()||ngDisabled}" class="pagination-next"
+    data-toggle="tooltip" title="próxima">
+	<a class="page-link" href ng-click="selectPage(page + 1, $event)" ng-disabled="noNext()||ngDisabled" uib-tabindex-toggle>
+		<span class="glyphicon glyphicon-chevron-right"></span>
+	</a>
+</li>
+<li class="page-item" role="menuitem" ng-if="::boundaryLinks" ng-class="{disabled: noNext()||ngDisabled}" class="pagination-last"
+    data-toggle="tooltip" title="última">
+	<a class="page-link" href ng-click="selectPage(totalPages, $event)" ng-disabled="noNext()||ngDisabled" uib-tabindex-toggle>
+		<span class="glyphicon glyphicon-step-forward"></span>
+	</a>
+</li>

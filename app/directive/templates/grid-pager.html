@@ -1,0 +1,26 @@
+<nav class="grid-pager" ng-class="{
+	bottom : pagerPosition === 'bottom',
+	top  : pagerPosition === 'top'
+}">
+	<div class="grid-pager-col">
+		<div class="grid-pager-row">
+			{{vm.listParams.totalRecords}} registros encontrados
+		</div>
+		<div class="grid-pager-row">
+			<span class="grid-pager-text">
+				Página
+				<input update-on-enter onfocus="this.select()" class="input-page" type="text" update-max-value="{{vm.listParams.totalPages}}"
+				    ng-model="vm.listParams.page" ng-model-options="{updateOn : 'submit'}"> de
+				<input class="input-page" readonly type="text" ng-model="vm.listParams.totalPages"> - Exibir
+				<input update-on-enter onfocus="this.select()" class="input-page" type="text" ng-change="vm.goPage()" ng-model="vm.listParams.size"
+				    ng-model-options="{updateOn : 'submit'}"> por página
+			</span>
+		</div>
+		<div class="grid-pager-row">
+			<ul uib-pagination class="pagination pagination-sm" template-url="/assets/templates/bootstrap-pagination.html" total-items="vm.listParams.totalRecords"
+			    ng-model="vm.listParams.page" max-size="5" boundary-links="true" boundary-link-number="true" rotate="true" num-pages="vm.listParams.totalPages"
+			    items-per-page="vm.listParams.size" ng-change="vm.goPage()">
+			</ul>
+		</div>
+	</div>
+</nav>

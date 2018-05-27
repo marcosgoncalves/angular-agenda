@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app="AgendaApp">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+    -->
+    <link rel="stylesheet" href="assets-bower/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="assets-bower/angular-bootstrap/ui-bootstrap-csp.css" />
+    <link rel="stylesheet" href="assets-bower/glyphicons/styles/glyphicons.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <script src="static/js/script.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+
+    <script src="assets-bower/angular/angular.js"></script>
+    <script src="assets-bower/angular-route/angular-route.js"></script>
+    <script src="assets-bower/angular-ui-router/release/angular-ui-router.js"></script>
+    <!-- <script src="assets-bower/restangular/dist/restangular.js"></script> -->
+    <script src="assets-bower/jquery/dist/jquery.js"></script>
+    <script src="assets-bower/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="assets-bower/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="assets-bower/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="assets-bower/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+
+
+    <script src="app.module.js"></script>
+    <script src="app.constants.js"></script>
+    <script src="app.routes.js"></script>
+
+    <script src="controller/ContatoController.js"></script>
+
+    <script src="service/AgendaService.js"></script>
+
+    <script src="directive/update-on-enter.directive.js"></script>
+    <script src="directive/grid-pager.directive.js"></script>
+</head>
+
+<body>
+    <nav id="navBar" class="sticky-top navbar navbar-expand-md navbar-light bg-light">
+        <a class="navbar-brand" href="#!/">Agenda</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample09">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#!/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!contatos">Contatos</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="dropUltimos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ultimos</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown09">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-md-0">
+                <input class="form-control form-control-sm" type="text" placeholder="Buscar">
+            </form>
+        </div>
+    </nav>
+
+    <div ui-view style="margin-top: 15px;"></div>
+</body>
+
+</html>
