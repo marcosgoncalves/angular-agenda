@@ -1,0 +1,181 @@
+.grid-pager {
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.grid-pager .pagination {
+    margin: 0px;
+    width: 100%;
+    justify-content: stretch;
+    user-select: none;
+}
+
+.grid-pager .pagination>li {
+    flex: 1 0 auto;
+}
+
+.grid-pager.top .pagination-sm .page-item .page-link {
+    border-bottom: none;
+}
+
+.grid-pager.top .pagination-sm .page-item:first-child .page-link {
+    border-top-left-radius: 0px;
+    border-left: none;
+}
+
+.grid-pager.top .pagination-sm .page-item:last-child .page-link {
+    border-top-right-radius: 0px;
+    border-right: none;
+}
+
+.grid-pager.bottom .pagination-sm .page-item .page-link {
+    border-top: none;
+}
+
+.grid-pager.bottom .pagination-sm .page-item:first-child .page-link {
+    border-bottom-left-radius: 0px;
+    border-left: none;
+}
+
+.grid-pager.bottom .pagination-sm .page-item:last-child .page-link {
+    border-bottom-right-radius: 0px;
+    border-right: none;
+}
+
+.grid-pager .grid-pager-text {
+    padding: 3px 0;
+    display: flex;
+    align-items: center;
+}
+
+.grid-pager .input-per-page {
+    outline: none;
+    border-radius: 3px;
+    display: inline-block;
+    /* width: 50px; */
+    margin: 0px 3px;
+    padding: 0px;
+    border: 1px solid #ddd;
+    font-size: 12px;
+    text-align-last: right;
+}
+
+.grid-pager .input-per-page option {
+    direction: rtl;
+}
+
+.grid-pager .input-page {
+    outline: none;
+    border-radius: 3px;
+    display: inline-block;
+    width: 30px;
+    margin: 0px 3px;
+    padding: 0px;
+    border: 1px solid #ddd;
+    font-size: 12px;
+    text-align: center;
+}
+
+.grid-pager .input-page[readonly] {
+    cursor: default;
+}
+
+.grid-pager .input-page:not([readonly]):hover,
+.grid-pager .input-per-page:hover {
+    box-shadow: 0px 0px 2px 2px rgba(122, 122, 122, 0.67);
+}
+
+.grid-pager .input-page:not([readonly]):focus,
+.grid-pager .input-per-page:hover {
+    box-shadow: 0px 0px 2px 2px rgba(129, 188, 255, 0.67);
+}
+
+.grid-pager .page-item .page-link:focus {
+    box-shadow: none;
+}
+
+.grid-pager .page-item .page-link {
+    padding: 0px 3px;
+    color: #888;
+    background-color: #f8f8f8;
+    border-color: #ddd;
+    min-width: 35px;
+    text-align: center;
+}
+
+.grid-pager .page-item.active .page-link {
+    color: #f8f8f8;
+    background-color: #888;
+    border-color: #888;
+}
+
+.grid-pager .page-item.disabled .page-link {
+    color: #ddd;
+    background-color: #f1f1f1;
+}
+
+/* ************************************ */
+
+.grid-pager-col {
+    background-color: #fefefe;
+    border-radius: 3.2px;
+    border: 1px solid #ddd;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-pager-row {
+    flex: 1 0 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-pager-row.box {
+    padding: 0 3px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.grid-pager.top .grid-pager-col .grid-pager-row.box:first-child {
+    border-bottom: 1px solid #ddd;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.grid-pager.bottom .grid-pager-col .grid-pager-row.box:first-child {
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.grid-pager.top {
+    margin-bottom: 15px;
+}
+
+.grid-pager.bottom {
+    margin-top: 15px;
+}
+
+.grid-pager.bottom .grid-pager-col {
+    flex-direction: column-reverse;
+}
+
+
+@media only screen and (max-width: 1200px) {}
+
+@media only screen and (max-width: 979px) {}
+
+@media only screen and (max-width: 767px) {
+    .grid-pager {
+        align-items: center;
+    }
+}
+
+@media only screen and (max-width: 480px) {}
+
+@media only screen and (max-width: 320px) {}

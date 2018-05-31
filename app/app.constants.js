@@ -1,8 +1,12 @@
 (function () {
     'use strict';
+
+    var localhost = window.location.hostname;
+
     angular
         .module('AgendaApp')
         .constant('AgendaApiConstants', {
-            baseUrl: 'http://177.144.172.91:58080/agenda'
+            baseUrl: 'http://' + localhost + ':58080/agenda'
         });
+
 })();

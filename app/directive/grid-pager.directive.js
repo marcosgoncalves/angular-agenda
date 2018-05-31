@@ -11,7 +11,9 @@
 			restrict: 'E',
 			scope: {},
 			link: function (scope, element, attrs) {
+				scope.perPageList = [5, 10, 15, 20, 25, 50, 100, 150, 200, 250, 500];
 				scope.vm = scope.$parent.vm;
+				scope.gridPagerId = (new Date()).getTime().toString();
 				angular.forEach(attrs.$attr, function (attr) {
 					var attrCamel = camelCase(attr);
 					scope[attrCamel] = attrs[attrCamel];

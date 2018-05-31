@@ -2,17 +2,23 @@
 <html ng-app="AgendaApp">
 
 <head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
     -->
-    <link rel="stylesheet" href="assets-bower/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="assets-bower/angular-bootstrap/ui-bootstrap-csp.css" />
-    <link rel="stylesheet" href="assets-bower/glyphicons/styles/glyphicons.css" />
+    <link rel="stylesheet" href="assets-bower/bootstrap/dist/css/bootstrap.css"
+    />
+    <link rel="stylesheet" href="assets-bower/angular-bootstrap/ui-bootstrap-csp.css"
+    />
+    <link rel="stylesheet" href="assets-bower/glyphicons/styles/glyphicons.css"
+    />
     <link rel="stylesheet" href="assets/css/styles.css" />
 
-    <script src="static/js/script.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/loading.js"></script>
     <script src="assets/js/popper.min.js"></script>
 
     <script src="assets-bower/angular/angular.js"></script>
@@ -31,19 +37,24 @@
     <script src="app.constants.js"></script>
     <script src="app.routes.js"></script>
 
-    <script src="controller/ContatoController.js"></script>
+    <script src="interceptor/http.interceptor.js"></script>
 
+    <script src="service/UtilService.js"></script>
     <script src="service/AgendaService.js"></script>
 
     <script src="directive/update-on-enter.directive.js"></script>
     <script src="directive/grid-pager.directive.js"></script>
+
+    <script src="controller/ContatoController.js"></script>
+    <script src="controller/InsertsController.js"></script>
+
 </head>
 
 <body>
     <nav id="navBar" class="sticky-top navbar navbar-expand-md navbar-light bg-light">
         <a class="navbar-brand" href="#!/">Agenda</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09"
-            aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09"
+            aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -56,11 +67,10 @@
                     <a class="nav-link" href="#!contatos">Contatos</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="dropUltimos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ultimos</a>
+                    <a href="javascript: ;" class="nav-link dropdown-toggle" id="dropUltimos" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Opções</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown09">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="#!inserts">Gerar Inserts</a>
                     </div>
                 </li>
             </ul>
@@ -71,6 +81,11 @@
     </nav>
 
     <div ui-view style="margin-top: 15px;"></div>
+
+    <div class="page-loading-container">
+        <img class="loading-img" src="assets/img/loading.gif">
+    </div>
+
 </body>
 
 </html>

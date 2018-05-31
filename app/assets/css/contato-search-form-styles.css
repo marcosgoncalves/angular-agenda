@@ -1,0 +1,127 @@
+.search-fieldset {
+    border: 1px solid #ddd;
+    border-radius: 0.2rem;
+    padding: 5px;
+    margin-bottom: 15px;
+    display: flex;
+}
+
+.search-fieldset * {
+    border-radius: 0.2rem;
+}
+
+.search-fieldset>legend {
+    display: inline-block;
+    width: initial;
+    max-width: initial;
+    /* line-height: 0.8rem; */
+    font-size: 15px;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    padding: 1px 45px;
+    margin: 0px;
+    margin-left: 20px;
+    margin-right: auto;
+    font-weight: bold;
+}
+
+.grid-table .grid-form {
+    width: 100%;
+    display: flex;
+}
+
+.grid-table .grid-form label {
+    /* background-color: #b2b2b2; */
+    margin: 0px;
+    font-weight: bold;
+}
+
+.grid-table .grid-form label::after {
+    content: ':';
+    margin-right: 5px;
+}
+
+.grid-column.search-id {
+    width: 30px;
+}
+
+.grid-column.search-nome {
+    width: 50px;
+}
+
+.grid-column.search-telefone {
+    width: 40px;
+}
+
+.grid-column.search-endereco {
+    width: 50px;
+}
+
+/* */
+
+.grid-wrapper.search-id-search-nome,
+.grid-column.search-id,
+.grid-column.search-nome,
+.grid-wrapper.search-telefone-search-endereco,
+.grid-column.search-telefone,
+.grid-column.search-endereco {
+    flex-grow: 1;
+}
+
+@media only screen and (max-width: 1200px) {}
+
+@media only screen and (max-width: 979px) {
+    .grid-wrapper.search-id-search-nome,
+    .grid-wrapper.search-telefone-search-endereco {
+        display: flex;
+        flex-direction: column;
+        width: 150px;
+    }
+    .grid-column.search-id,
+    .grid-column.search-nome {
+        width: 100%;
+        display: flex;
+    }
+    .grid-column.search-id label,
+    .grid-column.search-nome label {
+        width: 80px;
+    }
+    .grid-column.search-telefone,
+    .grid-column.search-endereco {
+        width: 100%;
+        display: flex;
+    }
+    .grid-column.search-telefone label,
+    .grid-column.search-endereco label {
+        width: 120px;
+    }
+    .grid-table .grid-form label {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+@media only screen and (max-width: 767px) {}
+
+@media only screen and (max-width: 480px) {
+    .grid-table .grid-form label::after {
+        content: '';
+        margin-right: 0px;
+    }
+    .grid-column.search-id,
+    .grid-column.search-nome,
+    .grid-column.search-telefone,
+    .grid-column.search-endereco {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .grid-column.search-id label,
+    .grid-column.search-nome label,
+    .grid-column.search-telefone label,
+    .grid-column.search-endereco label {
+        width: auto;
+        font-size: 0.8em;
+    }
+}
+
+@media only screen and (max-width: 320px) {}

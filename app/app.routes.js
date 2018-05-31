@@ -1,24 +1,52 @@
 (function () {
-    'use strict';
+	'use strict';
 
-    angular
-        .module('AgendaApp')
-        .config(Routes);
+	angular
+		.module('AgendaApp')
+		.config(Routes);
 
-    Routes.$inject = ['$stateProvider', '$urlRouterProvider'];
+	Routes.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-    function Routes($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/');
+	function Routes($stateProvider, $urlRouterProvider) {
+		$urlRouterProvider.otherwise('/');
 
-        $stateProvider
-            .state('index', {
-                url: '/',
-                templateUrl: './views/main.html'
-            })
-            .state('contatos', {
-                url: '/contatos',
-                templateUrl: './views/contatos.html'
-            });
-    }
+		$stateProvider
+			.state('index', {
+				url: '/',
+				templateUrl: './views/main.html'
+			})
+			.state('contatos', {
+				url: '/contatos',
+				templateUrl: './views/contatos.html',
+				controller: 'ContatoController as vm',
+				resolve: {
+					estadosResult: ['AgendaService', function (AgendaService) {
+						return AgendaService.getEstados();
+					}]
+				}
+			})
+			.state('inserts', {
+				url: '/inserts',
+				templateUrl: './views/inserts.html',
+				controller: 'InsertsController as vm',
+				resolve: {
+					resolveResult: ['$q', 'UtilService', 'AgendaService', function ($q, UtilService, AgendaService) {
+						return $q.all([UtilService.getBaseNomes(), AgendaService.getEstados(),UtilService.getCidades()]).then(function (resp) {
+							return {
+								baseNomes: resp[0],
+								estados: resp[1],
+								cidades: resp[2]
+							};
+						}).catch(function(){
+							return {
+								baseNomes: [],
+								estados: [],
+								cidades: {}
+							};
+						});
+					}]
+				}
+			});
+	}
 
 })();

@@ -1,0 +1,92 @@
+.grid-table {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+}
+
+.grid-table.grid-border {
+    border: 1px solid #b2b2b2;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+}
+
+.grid-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    background-color: #fff;
+}
+
+.grid-table.grid-zebra>.grid-row:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+.grid-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.grid-header {
+    background-color: #e2e2e2;
+    font-weight: bold;
+}
+
+.grid-label {
+    display: none;
+    margin: 0px;
+    padding: 0px;
+    font-weight: bold;
+    font-size: 0.7em;
+}
+
+.grid-column {
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.grid-table.grid-border .grid-row .grid-column {
+    border: 1px solid #b2b2b2;
+}
+.grid-table.grid-border .grid-row .grid-column {
+    border: 1px solid #b2b2b2;
+    border-top-width: 0px;
+    border-left-width: 0px;
+}
+
+.grid-column>div {
+    display: block;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+.grid-table .sortable {
+    cursor: pointer;
+}
+
+.grid-table .sortable:hover {
+    color: #a1a1a1;
+}
+
+.grid-table .sortable span::after {
+    margin-left: 5px;
+    color: #a1a1a1;
+    font-size: 9px;
+    vertical-align: baseline;
+}
+
+.grid-table .sortable.asc span::after {
+    content: url(../img/sort-asc.png) ' ' attr(data-sort-order);
+}
+
+.grid-table .sortable.desc span::after {
+    content: url(../img/sort-desc.png) ' ' attr(data-sort-order);
+}
