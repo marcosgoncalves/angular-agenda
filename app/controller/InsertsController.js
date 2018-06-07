@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 (function () {
     'use strict';
 
@@ -15,6 +16,35 @@
         vm.nomesList = resolveResult.baseNomes;
         vm.estadoList = resolveResult.estados;
         vm.cidadesList = resolveResult.cidades;
+        
+
+		vm.cidadesArrayList = [];
+		vm.estadoChange = function () {
+			vm.editing.endereco.cidade = '';
+			vm.cidadeChange();
+		};
+
+		var cidadeChangeTimeout = null;
+		vm.cidadeChange = function () {
+			clearTimeout(cidadeChangeTimeout);
+			cidadeChangeTimeout = setTimeout(cidadeChangeHandle, 750);
+		};
+
+		function cidadeChangeHandle() {
+			var limit = 100;
+			vm.cidadesArrayList = angular.copy(vm.cidadesList[vm.editing.endereco.estado]);
+			if (vm.editing.endereco.cidade) {
+				vm.cidadesArrayList = vm.cidadesArrayList.filter(function (element, index, array) {
+					var item = array[index].toString();
+					var searched = item.toLowerCase(), //makeComp(item),
+						search = vm.editing.endereco.cidade.toLowerCase(), //makeComp(vm.editing.endereco.cidade),
+						result = searched.indexOf(search);
+					// clog('comparacao', searched, search, result);
+					return result > -1;
+				});
+			}
+			vm.cidadesArrayList = vm.cidadesArrayList.slice(0, limit);
+		}
 
         vm.editing = {};
 
@@ -122,21 +152,14 @@
         function fillForm() {
             vm.editing = getRandonContato();
         }
-        /*
-                INSERT INTO CONTATO(ID, NOME, TELEFONE, ENDERECO, ENDERECO_LIMPO) VALUES(
-                    3, 'Thor', '11 94596-8797',
-                    '{"tipoLogradouro":"Travessa","logradouro":"dos fundos","numero":"66","complemento":"bloco X",
-                        "bairro":"Jardim Belo","cidade":"Uberlândia","estado":"MG","cep":"08985040"}',
-                        ',"Uberlândia","MG","bloco X","66","dos fundos","Jardim Belo","Travessa","08985040",');
-        */
 
         function stripKeys(jo) {
             var sb = '';
-			for(var key in jo) {
-				sb += ',\"' + jo[key] + '\"';
-			}
-			sb += ',';
-			return sb;
+            for (var key in jo) {
+                sb += ',\"' + jo[key] + '\"';
+            }
+            sb += ',';
+            return sb;
         }
 
         function safe(s) {
@@ -156,9 +179,43 @@
         }
 
         function gerar() {
+            var start = new Date();
+            vm.insertsOut = '';
             var m = [];
+
+            function thenHandler() {
+                return function () {
+                    //vm.insertsOut += 'contato inserido\n';
+                };
+            }
+            
+            function catchHandler() {
+                return function (e) {
+                    var mErrors = e.data.errors;
+                    var strMsg = '';
+                    mErrors = mErrors.sort(function (a, b) {
+                        if (a.field < b.field)
+                            return -1;
+                        if (a.field > b.field)
+                            return 1;
+                        return 0;
+                    });
+                    for (var i = 0; i < mErrors.length; i++) {
+                        var error = mErrors[i];
+                        strMsg += error.field + ' ' + error.defaultMessage + '\n';
+                    }
+                    vm.insertsOut += 'erro\n' + strMsg;
+                };
+            }
+
             for (var i = 0; i < vm.qtd; i++) {
-                m.push('insert into contato(nome, telefone, endereco, endereco_limpo) values(' + getValuesContato() + ');' + '\n');
+                if (vm.flExecutar) {
+                    AgendaService.saveContato(getRandonContato())
+                        .then(thenHandler())
+                        .catch(catchHandler());
+                } else {
+                    m.push('insert into contato(nome, telefone, endereco, endereco_limpo) values(' + getValuesContato() + ');' + '\n');
+                }
             }
             vm.insertsOut = m.join('');
         }

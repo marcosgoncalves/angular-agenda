@@ -7,9 +7,28 @@
 <style>
 </style>
 
-<div class="container-fluid">
+<div class="container-fluid contatos">
 
 	<h3>contatos</h3>
+
+	<div class="container" ng-show="vm.editing">
+
+		<div id="frmTitle" class="form-row">
+			<h5>{{ !vm.editing ? '' : vm.editing.idx
+				< 0 ? 'Novo' : 'Editar' }} Contato</h5>
+		</div>
+
+		<form name="vm.frmContato" class="form" ng-disabled="{{true}}" ng-model="vm.editing"
+		    ng-include src="'/views/includes/contato-form.html'"></form>
+
+		<div class="text-right">
+			<button id="btnSalvar" ng-click="vm.save();" ng-disabled="!vm.editing" type="button"
+			    class="btn btn-primary">salvar</button>
+			<button ng-click="vm.cancel();" ng-disabled="!vm.editing" type="button" class="btn btn-danger">cancelar</button>
+		</div>
+	</div>
+
+	<!-- ****************************************** -->
 
 	<div ng-show="!vm.editing">
 
@@ -55,19 +74,35 @@
 					</div>
 				</div>
 			</div>
+			<div class="search-buttons">
+				<button type="button" ng-click="vm.goSearch();" class="btn btn-sm btn-primary"
+				    data-toggle="tooltip" title="Pesquisar">
+					<span class="glyphicon glyphicon-search"></span>
+					Pesquisar
+				</button>
+				<button type="button" ng-click="vm.cleanSearch();" class="btn btn-sm btn-secondary"
+				    data-toggle="tooltip" title="Limpar">
+					<span class="glyphicon glyphicon-trash"></span>
+					Limpar
+				</button>
+			</div>
 		</fieldset>
 
 		<!-- ****************************************** -->
 
-		<button type="button" ng-click="vm.novo();" class="btn btn-sm btn-success" data-toggle="tooltip"
-		    title="Incluir">
-			<span class="glyphicon glyphicon-plus"></span>
-		</button>
-		<button type="button" ng-click="vm.goSearch();" class="btn btn-sm btn-primary"
-		    data-toggle="tooltip" title="Atualizar">
-			<span class="glyphicon glyphicon-refresh"></span>
-		</button>
-		<grid-pager></grid-pager>
+		<div class="control-grid top">
+			<div class="buttons">
+				<button type="button" ng-click="vm.novo();" class="btn btn-sm btn-success">
+					<span class="glyphicon glyphicon-plus"></span>
+					<span>Incluir</span>
+				</button>
+				<button type="button" ng-click="vm.goSearch();" class="btn btn-sm btn-primary">
+					<span class="glyphicon glyphicon-refresh"></span>
+					<span>Atualizar</span>
+				</button>
+			</div>
+			<grid-pager></grid-pager>
+		</div>
 
 		<div class="grid-table grid-zebra grid-border">
 			<div class="grid-row grid-header">
@@ -122,7 +157,7 @@
 							<label class="grid-label telefone sortable" data-sort-column="telefone">
 								<span>Telefone</span>
 							</label>
-							<div>{{contato.telefone}}</div>
+							<div>{{contato.telefone| telefone}}</div>
 						</div>
 					</div>
 					<div class="grid-wrapper endereco">
@@ -136,7 +171,7 @@
 								? '' : ' - ' + contato.endereco.bairro}} {{!contato.endereco.cidade
 								? '' : ' - ' + contato.endereco.cidade}} {{!contato.endereco.estado
 								? '' : ' - ' + contato.endereco.estado}} {{!contato.endereco.cep ? ''
-								: ' - CEP: ' + contato.endereco.cep}}
+								: ' - CEP: ' + (contato.endereco.cep|cep)}}
 							</div>
 						</div>
 					</div>
@@ -154,95 +189,19 @@
 			</div>
 		</div>
 
-		<grid-pager pager-position="bottom"></grid-pager>
+		<div class="control-grid bottom">
+			<div class="buttons">
+				<button type="button" ng-click="vm.novo();" class="btn btn-sm btn-success">
+					<span class="glyphicon glyphicon-plus"></span>
+					<span>Incluir</span>
+				</button>
+				<button type="button" ng-click="vm.goSearch();" class="btn btn-sm btn-primary">
+					<span class="glyphicon glyphicon-refresh"></span>
+					<span>Atualizar</span>
+				</button>
+			</div>
+			<grid-pager pager-position="bottom"></grid-pager>
+		</div>
 
-	</div>
-	<br>
-
-	<div class="container" ng-show="vm.editing">
-
-		<form name="vm.frmContato" class="form" ng-disabled="{{true}}" ng-model="vm.editing">
-
-			<div id="frmTitle" class="form-row">
-				<h5>{{ !vm.editing ? '' : vm.editing.idx
-					< 0 ? 'Novo' : 'Editar' }} Contato</h5>
-			</div>
-			<div class="form-row">
-				<div class="form-group form-group-sm col-md-1">
-					<label>Id</label>
-					<input name="id" ng-model="vm.editing.id" disabled type="text" class="form-control form-control-sm">
-				</div>
-				<div class="form-group form-group-sm col-md-9">
-					<label>Nome</label>
-					<input name="nome" ng-model="vm.editing.nome" required type="text" class="form-control form-control-sm">
-				</div>
-				<div class="form-group form-group-sm col-md-2">
-					<label>Telefone</label>
-					<input name="telefone" ng-model="vm.editing.telefone" required type="text" class="form-control form-control-sm">
-				</div>
-			</div>
-			<div class="form-row">
-				<h5>Endereço</h5>
-			</div>
-			<div class="form-row">
-
-				<div class="form-group form-group-sm col-md-3">
-					<label>Tipo Logradouro</label>
-					<select name="tipoLogradouro" ng-model="vm.editing.endereco.tipoLogradouro"
-					    required class="form-control form-control-sm">
-						<option>Rua</option>
-						<option>Avenida</option>
-						<option>Alameda</option>
-						<option>Travessa</option>
-						<option>Outro</option>
-					</select>
-				</div>
-				<div class="form-group form-group-sm col-md-9">
-					<label>Logradouro</label>
-					<input name="logradouro" ng-model="vm.editing.endereco.logradouro" required
-					    type="text" class="form-control form-control-sm">
-				</div>
-			</div>
-			<div class="form-row">
-				<div class="form-group form-group-sm col-md-2">
-					<label>Número</label>
-					<input name="numero" ng-model="vm.editing.endereco.numero" required type="text"
-					    class="form-control form-control-sm">
-				</div>
-				<div class="form-group form-group-sm col-md-5">
-					<label>Complemento</label>
-					<input name="complemento" ng-model="vm.editing.endereco.complemento" type="text"
-					    class="form-control form-control-sm">
-				</div>
-				<div class="form-group form-group-sm col-md-5">
-					<label>Bairro</label>
-					<input name="bairro" ng-model="vm.editing.endereco.bairro" required type="text"
-					    class="form-control form-control-sm">
-				</div>
-			</div>
-			<div class="form-row">
-				<div class="form-group form-group-sm col-md-6">
-					<label>Cidade</label>
-					<input name="cidade" ng-model="vm.editing.endereco.cidade" required type="text"
-					    class="form-control form-control-sm">
-				</div>
-				<div class="form-group form-group-sm col-md-4">
-					<label>Estado</label>
-					<select name="estado" ng-model="vm.editing.endereco.estado" required class="form-control form-control-sm">
-						<option ng-repeat="estado in vm.estadoList" value="{{estado.Sigla}}">{{estado.Nome}}</option>
-					</select>
-				</div>
-				<div class="form-group form-group-sm col-md-2">
-					<label>CEP</label>
-					<input name="cep" ng-model="vm.editing.endereco.cep" required type="text" class="form-control form-control-sm">
-				</div>
-			</div>
-			<div class="text-right">
-				<button id="btnSalvar" ng-click="vm.save();" ng-disabled="!vm.editing" type="button"
-				    class="btn btn-primary">salvar</button>
-				<button ng-click="vm.cancel();" ng-disabled="!vm.editing" type="button" class="btn btn-danger">cancelar</button>
-			</div>
-		</form>
 	</div>
 </div>
-<br>

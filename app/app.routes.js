@@ -19,9 +19,25 @@
 				url: '/contatos',
 				templateUrl: './views/contatos.html',
 				controller: 'ContatoController as vm',
-				resolve: {
-					estadosResult: ['AgendaService', function (AgendaService) {
-						return AgendaService.getEstados();
+				resolve:{
+					resolveResult: ['$q', 'UtilService', 'AgendaService', function ($q, UtilService, AgendaService) {
+						return $q.all([
+							UtilService.getBaseNomes(),
+							AgendaService.getEstados(),
+							UtilService.getCidades()
+						]).then(function (resp) {
+							return {
+								baseNomes: resp[0],
+								estados: resp[1],
+								cidades: resp[2]
+							};
+						}).catch(function () {
+							return {
+								baseNomes: [],
+								estados: [],
+								cidades: {}
+							};
+						});
 					}]
 				}
 			})
@@ -31,13 +47,17 @@
 				controller: 'InsertsController as vm',
 				resolve: {
 					resolveResult: ['$q', 'UtilService', 'AgendaService', function ($q, UtilService, AgendaService) {
-						return $q.all([UtilService.getBaseNomes(), AgendaService.getEstados(),UtilService.getCidades()]).then(function (resp) {
+						return $q.all([
+							UtilService.getBaseNomes(),
+							AgendaService.getEstados(),
+							UtilService.getCidades()
+						]).then(function (resp) {
 							return {
 								baseNomes: resp[0],
 								estados: resp[1],
 								cidades: resp[2]
 							};
-						}).catch(function(){
+						}).catch(function () {
 							return {
 								baseNomes: [],
 								estados: [],
@@ -46,6 +66,11 @@
 						});
 					}]
 				}
+			})
+			.state('inputs', {
+				url: '/inputs',
+				templateUrl: './views/inputs.html',
+				controller: 'InputsController as vm'
 			});
 	}
 

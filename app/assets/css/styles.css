@@ -1,12 +1,82 @@
-.ng-invalid.ng-touched {
-	/* box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.5); */
-	border-color: red;
+.ipt-mask-invalid {
+	border-color: #dc3545 !important;
+	box-shadow: inset 0 1px 1px rgba(255, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6) !important;
 }
 
-@media (max-width: 600px) {
-	.hidden-sm {
-		display: none;
-	}
+.ng-invalid.ng-touched {
+	/* box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.5); */
+	border-color: #dc3545;
+}
+
+.ng-invalid.ng-touched+span {
+	display: block;
+	position: relative;
+	float: right;
+	margin: 0px;
+	margin-top: -43px;
+	margin-right: -4px;
+	z-index: 500;
+	border: solid 1px #dc3545;
+	color: #fff;
+	border-radius: 0.2rem;
+	padding: 3px;
+	background-color: #dc3545;
+	font-size: 10px;
+	line-height: 1;
+}
+
+.ng-invalid.ng-touched.ng-not-empty[invalid-msg]+span::after {
+	content: attr(invalid-msg) !important;
+}
+.ng-invalid.ng-touched+span::after {
+	content: 'Valor inválido';
+}
+
+.ng-invalid.ng-touched.ng-invalid-required+span::after {
+	content: 'Campo Obrigatório';
+}
+
+.ng-invalid.ng-touched.ng-not-empty.ng-invalid-pattern+span::after {
+	content: 'Formato inválido';
+}
+
+/* form-control form-control-sm ng-pristine ng-scope ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched */
+
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	flex-direction: column;
+	overflow: hidden;
+	display: flex;
+	/* align-items: stretch; */
+}
+
+.nav-bar {
+	flex-shrink: 0;
+	box-shadow: 0px 0px 5px #888;
+}
+
+.main-view {
+	flex-grow: 1;
+	flex-direction: column;
+	display: flex;
+}
+
+.main-view .uiview {
+	flex-grow: 1;
+	padding-top: 10px;
+	overflow: auto;
+}
+
+.footer {
+	flex-shrink: 0;
+	background-color: #888;
+	display: flex;
+	justify-content: flex-end;
+	padding: 3px 5px;
 }
 
 /* ********************** */
@@ -51,7 +121,7 @@
 
 .page-loading-container {
 	display: none;
-	position: absolute;
+	position: fixed;
 	z-index: 9000;
 	top: 0px;
 	left: 0px;

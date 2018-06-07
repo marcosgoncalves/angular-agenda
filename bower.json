@@ -12,7 +12,8 @@
     "restangular": "latest",
     "bootstrap": "latest",
     "glyphicons": "latest",
-    "angular-bootstrap": "^2.5.0"
+    "angular-bootstrap": "^2.5.0",
+    "angular-filter": "^0.5.17"
   },
   "analytics": false
 }

@@ -1,120 +1,60 @@
 <style>
-    .btn-preencher {
-        margin: 0px 5px;
-        padding: 0px 5px;
-    }
+	.btn-preencher {
+		margin: 0px 5px;
+		padding: 0px 5px;
+	}
 </style>
 
 <div class="container-fluid">
 
-    <h3>Inserts</h3>
+	<h3>Inserts</h3>
 
-    <div class="container">
+	<div class="container">
 
-        <form name="vm.frmContato" class="form" ng-disabled="{{true}}" ng-model="vm.editing">
+		<div class="form-row">
+			Clique em
+			<button ng-click="vm.fillForm();" type="button" class="btn btn-sm btn-secondary btn-preencher">preencher</button> para gerar um contato
+		</div>
 
-            <div class="form-row">
-                Clique em
-                <button ng-click="vm.fillForm();" type="button" class="btn btn-sm btn-secondary btn-preencher">preencher</button> para gerar um contato
-            </div>
+		<hr>
 
-            <hr>
+		<form name="vm.frmContato" class="form" ng-disabled="{{true}}" ng-model="vm.editing"
+		    ng-include src="'/views/includes/contato-form.html'">
+		</form>
 
-            <div class="form-row">
-                <div class="form-group form-group-sm col-md-1">
-                    <label>Id</label>
-                    <input name="id" ng-model="vm.editing.id" disabled type="text" class="form-control form-control-sm">
-                </div>
-                <div class="form-group form-group-sm col-md-9">
-                    <label>Nome</label>
-                    <input name="nome" ng-model="vm.editing.nome" required type="text" class="form-control form-control-sm">
-                </div>
-                <div class="form-group form-group-sm col-md-2">
-                    <label>Telefone</label>
-                    <input name="telefone" ng-model="vm.editing.telefone" required type="text" class="form-control form-control-sm">
-                </div>
-            </div>
+		<hr>
 
-            <div class="form-row">
+		<div class="form-row">
+			<div class="form-group col-md-8">
+				<div class="form-check">
+					<input id="flExecutar" ng-model="vm.flExecutar" class="form-check-input" type="checkbox">
+					<label class="form-check-label" for="flExecutar">
+						Executar os inserts
+					</label>
+				</div>
+			</div>
+			<div class="form-group col-md-4">
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<div class="input-group-text">Quantidade</div>
+					</div>
+					<input name="qtd" ng-model="vm.qtd" required type="number" min="0" max="10000"
+					    step="100" class="form-control form-control-sm">
+					<div class="input-group-append">
+						<button id="btnSalvar" ng-click="vm.gerar();" type="button" class="btn btn-sm btn-primary">Gerar</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-                <div class="form-group form-group-sm col-md-3">
-                    <label>Tipo Logradouro</label>
-                    <select name="tipoLogradouro" ng-model="vm.editing.endereco.tipoLogradouro"
-                        required class="form-control form-control-sm">
-                        <option>Rua</option>
-                        <option>Avenida</option>
-                        <option>Alameda</option>
-                        <option>Travessa</option>
-                        <option>Outro</option>
-                    </select>
-                </div>
-                <div class="form-group form-group-sm col-md-9">
-                    <label>Logradouro</label>
-                    <input name="logradouro" ng-model="vm.editing.endereco.logradouro" required
-                        type="text" class="form-control form-control-sm">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group form-group-sm col-md-2">
-                    <label>Número</label>
-                    <input name="numero" ng-model="vm.editing.endereco.numero" required type="text"
-                        class="form-control form-control-sm">
-                </div>
-                <div class="form-group form-group-sm col-md-5">
-                    <label>Complemento</label>
-                    <input name="complemento" ng-model="vm.editing.endereco.complemento" type="text"
-                        class="form-control form-control-sm">
-                </div>
-                <div class="form-group form-group-sm col-md-5">
-                    <label>Bairro</label>
-                    <input name="bairro" ng-model="vm.editing.endereco.bairro" required type="text"
-                        class="form-control form-control-sm">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group form-group-sm col-md-6">
-                    <label>Cidade</label>
-                    <input name="cidade" ng-model="vm.editing.endereco.cidade" required type="text"
-                        class="form-control form-control-sm">
-                </div>
-                <div class="form-group form-group-sm col-md-4">
-                    <label>Estado</label>
-                    <select name="estado" ng-model="vm.editing.endereco.estado" required class="form-control form-control-sm">
-                        <option ng-repeat="estado in vm.estadoList" value="{{estado.Sigla}}">{{estado.Nome}}</option>
-                    </select>
-                </div>
-                <div class="form-group form-group-sm col-md-2">
-                    <label>CEP</label>
-                    <input name="cep" ng-model="vm.editing.endereco.cep" required type="text" class="form-control form-control-sm">
-                </div>
-            </div>
-        </form>
-
-        <hr>
-
-        <div class="form-row">
-            <div class="form-group col-md-8"></div>
-            <div class="form-group col-md-4">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">Quantidade</div>
-                    </div>
-                    <input name="qtd" ng-model="vm.qtd" required type="number" min="0" max="10000"
-                        step="100" class="form-control form-control-sm">
-                    <div class="input-group-append">
-                        <button id="btnSalvar" ng-click="vm.gerar();" type="button" class="btn btn-sm btn-primary">Gerar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="form-group col-md-12">
-                <label>Inserts gerados</label>
-                <textarea class="form-control form-control-sm" ng-model="vm.insertsOut" rows="10" style="white-space: nowrap;"></textarea>
-            </div>
-        </div>
-    </div>
+		<div class="form-row">
+			<div class="form-group col-md-12">
+				<label>Inserts gerados</label>
+				<textarea class="form-control form-control-sm" ng-model="vm.insertsOut" rows="10"
+				    style="white-space: nowrap;"></textarea>
+			</div>
+		</div>
+	</div>
 
 </div>
 <br>

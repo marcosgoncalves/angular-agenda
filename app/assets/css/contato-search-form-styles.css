@@ -36,6 +36,18 @@
     font-weight: bold;
 }
 
+.search-buttons {
+    flex: 1 0 auto;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.search-buttons .btn {
+    margin-left: 5px;
+}
+
+/*  */
+
 .grid-table .grid-form label::after {
     content: ':';
     margin-right: 5px;
@@ -75,7 +87,7 @@
     .grid-wrapper.search-telefone-search-endereco {
         display: flex;
         flex-direction: column;
-        width: 150px;
+        width: 140px;
     }
     .grid-column.search-id,
     .grid-column.search-nome {

@@ -1,0 +1,76 @@
+<div class="form-row">
+    <div class="form-group form-group-sm col-md-1">
+        <label>Id</label>
+        <input name="id" ng-model="vm.editing.id" disabled type="text" class="form-control form-control-sm"><span></span>
+    </div>
+    <div class="form-group form-group-sm col-md-9">
+        <label>Nome</label>
+        <input name="nome" ng-model="vm.editing.nome" required type="text" class="form-control form-control-sm"><span></span>
+    </div>
+    <div class="form-group form-group-sm col-md-2">
+        <label>Telefone</label>
+        <input ipt-mask="telefone" name="telefone" ng-model="vm.editing.telefone" required type="text" class="form-control form-control-sm"><span></span>
+    </div>
+</div>
+
+<div class="form-row">
+    <h5>Endereço</h5>
+</div>
+
+<div class="form-row">
+    <div class="form-group form-group-sm col-md-2">
+        <label>CEP</label>
+        <input ipt-mask="cep" name="cep" ng-model="vm.editing.endereco.cep" required type="text" class="form-control form-control-sm"><span></span>
+    </div>
+    <div class="form-group form-group-sm col-md-4">
+        <label>Estado</label>
+        <select name="estado" ng-model="vm.editing.endereco.estado" required class="form-control form-control-sm"
+            ng-change="vm.estadoChange()">
+            <option ng-repeat="estado in vm.estadoList" value="{{estado.Sigla}}">{{estado.Nome}}</option>
+        </select><span></span>
+    </div>
+    <div class="form-group form-group-sm col-md-6">
+        <label>Cidade</label>
+        <input name="cidade" ng-model="vm.editing.endereco.cidade" required type="text"
+            class="form-control form-control-sm" list="cidadeDataList" ng-change="vm.cidadeChange()" autocomplete="off"><span></span>
+        <datalist id="cidadeDataList">
+            <option ng-repeat="cidade in vm.cidadesArrayList" value="{{cidade}}">{{cidade}}</option>
+        </datalist>
+    </div>
+</div>
+<div class="form-row">
+
+    <div class="form-group form-group-sm col-md-3">
+        <label>Tipo Logradouro</label>
+        <select name="tipoLogradouro" ng-model="vm.editing.endereco.tipoLogradouro"
+            required class="form-control form-control-sm">
+            <option>Rua</option>
+            <option>Avenida</option>
+            <option>Alameda</option>
+            <option>Travessa</option>
+            <option>Outro</option>
+        </select><span></span>
+    </div>
+    <div class="form-group form-group-sm col-md-9">
+        <label>Logradouro</label>
+        <input name="logradouro" ng-model="vm.editing.endereco.logradouro" required
+            type="text" class="form-control form-control-sm"><span></span>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group form-group-sm col-md-2">
+        <label>Número</label>
+        <input name="numero" ng-model="vm.editing.endereco.numero" required type="text"
+            class="form-control form-control-sm"><span></span>
+    </div>
+    <div class="form-group form-group-sm col-md-5"><span></span>
+        <label>Complemento</label>
+        <input name="complemento" ng-model="vm.editing.endereco.complemento" type="text"
+            class="form-control form-control-sm">
+    </div>
+    <div class="form-group form-group-sm col-md-5">
+        <label>Bairro</label>
+        <input name="bairro" ng-model="vm.editing.endereco.bairro" required type="text"
+            class="form-control form-control-sm"><span></span>
+    </div>
+</div>

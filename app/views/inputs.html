@@ -1,0 +1,248 @@
+<style>
+	.btn-preencher {
+		margin: 0px 5px;
+		padding: 0px 5px;
+	}
+
+	.inputs .grup {
+		width: 100%;
+		border-bottom: 1px solid #ddd;
+		padding: 5px 0;
+		margin: 5px 0;
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+	}
+
+	.inputs .grup .cell {
+		flex-grow: 0;
+	}
+
+	.inputs .grup .cell:last-child {
+		flex-grow: 1;
+	}
+
+	.inputs .lbl {
+		width: 120px;
+		text-align: right;
+		margin-right: 5px;
+	}
+
+	.inputs .lbl::after {
+		content: ':';
+	}
+
+	.inputs .ipt {
+		width: 100%;
+	}
+
+	input[fmt-moeda] {
+		width: 100%;
+		text-align: right;
+	}
+</style>
+
+<div class="container-fluid inputs">
+
+	<h3>Inputs</h3>
+	<form name="vm.frmInputs" ng-model="vm.frmInputs">
+		<div class="grup">
+			<div class="cell">
+				<label class="lbl">mask moeda</label>
+			</div>
+			<div class="cell">
+				<div>
+					<input required name="money" ipt-mask="moeda" decimal-places="0" invalid-class="ipt-mask-invalid"
+					    type="text" class="form-control form-control-sm" ng-model="money" ng-init="money = ''"
+					    ng-change="money2=money">
+					<span></span>
+				</div>
+				<div>ng-model: {{money}}</div>
+				<div>ng-change: {{money2 | moeda}}</div>
+			</div>
+		</div>
+
+		<div class="grup">
+			<div class="cell">
+				<label class="lbl">mask tel</label>
+			</div>
+			<div class="cell">
+				<div>
+					<input required name="tel" ipt-mask="tel" invalid-class="ipt-mask-invalid" type="text"
+					    class="form-control form-control-sm" ng-model="tel" ng-init="tel = ''"
+					    ng-change="tel2=tel">
+					<span></span>
+				</div>
+				<div>ng-model: {{tel}}</div>
+				<div>ng-change: {{tel2 | telefone}}</div>
+			</div>
+		</div>
+
+		<div class="grup">
+			<div class="cell">
+				<label class="lbl">mask cep</label>
+			</div>
+			<div class="cell">
+				<div>
+					<input invalid-msg="CEP inválido" required name="cep" ipt-mask="cep" invalid-class="ipt-mask-invalid"
+					    type="text" class="form-control form-control-sm" ng-model="cep" ng-init="cep = ''"
+					    ng-change="cep2=cep">
+					<span></span>
+				</div>
+				<div>ng-model: {{cep}}</div>
+				<div>ng-change: {{cep2 | cep}}</div>
+			</div>
+		</div>
+
+		<div class="grup">
+			<div class="cell">
+				<label class="lbl">fmt-moeda</label>
+			</div>
+			<div class="cell">
+				<div>
+					<input fmt-moeda xmax-val="90000" required type="text" class="form-control form-control-sm"
+					    ng-model="moeda" ng-init="moeda = '15.48'" ng-change="moeda2=moeda">
+					<span></span>
+				</div>
+				<div>ng-model: {{moeda|json}}</div>
+				<div>ng-change: {{moeda2|json}}</div>
+			</div>
+		</div>
+
+		<div class="grup">
+			<div class="cell">
+				<label class="lbl" for="color">color</label>
+			</div>
+			<div class="cell">
+				<input required class="form-control form-control-sm ipt" ng-model="color" id="color"
+				    type="color">
+				<span></span>
+				{{color}}
+			</div>
+		</div>
+		<div class="grup">
+			<div class="cell">
+				<label class="lbl" for="date">date</label>
+			</div>
+			<div class="cell">
+				<input required class="form-control form-control-sm ipt" ng-model="date" id="date"
+				    type="date">
+				<span></span>
+				{{date}}
+			</div>
+		</div>
+		<div class="grup">
+			<div class="cell">
+				<label class="lbl" for="datetime-local">datetime-local </label>
+			</div>
+			<div class="cell">
+				<input required class="form-control form-control-sm ipt" ng-model="datetimeLocal"
+				    id="datetimeLocal" type="datetime-local">
+				<span></span>
+				{{datetimeLocal}}
+			</div>
+		</div>
+		<div class="grup">
+			<div class="cell">
+				<label class="lbl" for="email">email</label>
+			</div>
+			<div class="cell">
+				<input required class="form-control form-control-sm ipt" ng-model="email" id="email"
+				    type="email">
+				<span></span>
+				{{email}}
+			</div>
+		</div>
+		<div class="grup">
+			<div class="cell">
+				<label class="lbl" for="month">month</label>
+			</div>
+			<div class="cell">
+				<input required class="form-control form-control-sm ipt" ng-model="month" id="month"
+				    type="month">
+				<span></span>
+				{{month}}
+			</div>
+		</div>
+		<div class="grup">
+			<div class="cell">
+				<label class="lbl" for="number">number</label>
+			</div>
+			<div class="cell">
+				<input required class="form-control form-control-sm ipt" ng-model="number" id="number"
+				    type="number">
+				<span></span>
+				{{number}}
+			</div>
+		</div>
+		<div class="grup">
+			<div class="cell">
+				<label class="lbl" for="range">range</label>
+			</div>
+			<div class="cell">
+				<input required class="form-control form-control-sm ipt" ng-model="range" id="range"
+				    type="range">
+				<span></span>
+				{{range}}
+			</div>
+		</div>
+		<div class="grup">
+			<div class="cell">
+				<label class="lbl" for="search">search</label>
+			</div>
+			<div class="cell">
+				<input required class="form-control form-control-sm ipt" ng-model="search" id="search"
+				    type="search">
+				<span></span>
+				{{search}}
+			</div>
+		</div>
+		<div class="grup">
+			<div class="cell">
+				<label class="lbl" for="tel">tel</label>
+			</div>
+			<div class="cell">
+				<input required class="form-control form-control-sm ipt" ng-model="tel" id="tel"
+				    type="tel">
+				<span></span>
+				{{tel}}
+			</div>
+		</div>
+		<div class="grup">
+			<div class="cell">
+				<label class="lbl" for="time">time</label>
+			</div>
+			<div class="cell">
+				<input required class="form-control form-control-sm ipt" ng-model="time" id="time"
+				    type="time">
+				<span></span>
+				{{time}}
+			</div>
+		</div>
+		<div class="grup">
+			<div class="cell">
+				<label class="lbl" for="url">week</label>
+			</div>
+			<div class="cell">
+				<input required class="form-control form-control-sm ipt" ng-model="week" id="url"
+				    type="week">
+				<span></span>
+				{{week}}
+			</div>
+		</div>
+		<div class="grup">
+			<div class="cell">
+				<label class="lbl" for="week">url</label>
+			</div>
+			<div class="cell">
+				<input required class="form-control form-control-sm ipt" ng-model="url" id="week"
+				    type="url">
+				<span></span>
+				{{url}}
+			</div>
+		</div>
+
+	</form>
+
+
+</div>

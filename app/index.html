@@ -23,10 +23,10 @@
 
     <script src="assets-bower/angular/angular.js"></script>
     <script src="assets-bower/angular-route/angular-route.js"></script>
+    <script src="assets-bower/angular-filter/dist/angular-filter.js"></script>
     <script src="assets-bower/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- <script src="assets-bower/restangular/dist/restangular.js"></script> -->
     <script src="assets-bower/jquery/dist/jquery.js"></script>
-    <script src="assets-bower/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script src="assets-bower/bootstrap/dist/js/bootstrap.js"></script>
     <script src="assets-bower/angular-bootstrap/ui-bootstrap.js"></script>
     <script src="assets-bower/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -44,21 +44,27 @@
 
     <script src="directive/update-on-enter.directive.js"></script>
     <script src="directive/grid-pager.directive.js"></script>
+    <script src="directive/ipt-mask.directive.js"></script>
+    <script src="directive/fmt-moeda.directive.js"></script>
 
+    <script src="controller/BodyController.js"></script>
     <script src="controller/ContatoController.js"></script>
     <script src="controller/InsertsController.js"></script>
+    <script src="controller/InputsController.js"></script>
 
 </head>
 
-<body>
-    <nav id="navBar" class="sticky-top navbar navbar-expand-md navbar-light bg-light">
+<body ng-controller="BodyController as bodyCtrl">
+    <nav id="navBar" class="nav-bar navbar nav-collapse navbar-expand-md navbar-light bg-light">
+
         <a class="navbar-brand" href="#!/">Agenda</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09"
-            aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
+            aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarsExample09">
+        <div class="navbar-collapse collapse" id="navbarHeader">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="#!/">Home</a>
@@ -67,9 +73,10 @@
                     <a class="nav-link" href="#!contatos">Contatos</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a href="javascript: ;" class="nav-link dropdown-toggle" id="dropUltimos" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Opções</a>
+                    <a href="javascript: void();" class="nav-link dropdown-toggle" id="dropUltimos"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Opções</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown09">
+                        <a class="dropdown-item" href="#!inputs">Inputs</a>
                         <a class="dropdown-item" href="#!inserts">Gerar Inserts</a>
                     </div>
                 </li>
@@ -78,9 +85,16 @@
                 <input class="form-control form-control-sm" type="text" placeholder="Buscar">
             </form>
         </div>
+
     </nav>
 
-    <div ui-view style="margin-top: 15px;"></div>
+    <div class="main-view">
+        <div ui-view class="uiview"></div>
+    </div>
+
+    <nav id="navFooter" class="footer">
+        by Markito
+    </nav>
 
     <div class="page-loading-container">
         <img class="loading-img" src="assets/img/loading.gif">

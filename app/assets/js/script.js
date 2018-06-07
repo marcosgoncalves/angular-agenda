@@ -24,3 +24,48 @@ function camelCase(name) {
     }).
     replace(MOZ_HACK_REGEXP, 'Moz$1');
 }
+
+var makeComp = (function(){
+
+    /*var accents = {
+            a: 'àáâãäåæ',
+            c: 'ç',
+            e: 'èéêëæ',
+            i: 'ìíîï',
+            n: 'ñ',
+            o: 'òóôõöø',
+            s: 'ß',
+            u: 'ùúûü',
+            y: 'ÿ'
+        },
+        chars = /[aceinosuy]/g;
+
+    return function makeComp(input) {
+        return input.toLowerCase().replace(chars, function(c){
+            return '[' + c + accents[c] + ']';
+        });
+    };*/
+
+    var accent_map = {
+        'à': 'a', 'á': 'a', 'â': 'a', 'ã': 'a', 'ä': 'a', 'å': 'a', // a
+        'ç': 'c',                                                   // c
+        'è': 'e', 'é': 'e', 'ê': 'e', 'ë': 'e',                     // e
+        'ì': 'i', 'í': 'i', 'î': 'i', 'ï': 'i',                     // i
+        'ñ': 'n',                                                   // n
+        'ò': 'o', 'ó': 'o', 'ô': 'o', 'õ': 'o', 'ö': 'o', 'ø': 'o', // o
+        'ß': 's',                                                   // s
+        'ù': 'u', 'ú': 'u', 'û': 'u', 'ü': 'u',                     // u
+        'ÿ': 'y'                                                    // y
+    };
+
+    return function accent_fold(s) {
+        if (!s) { return ''; }
+        s = s.toLowerCase();
+        var ret = '';
+        for (var i = 0; i < s.length; i++) {
+            ret += accent_map[s.charAt(i)] || s.charAt(i);
+        }
+        return ret;
+    }
+
+}());

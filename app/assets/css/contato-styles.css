@@ -1,10 +1,79 @@
+.control-grid {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 15px;
+}
+
+.control-grid.top {
+    padding-bottom: 15px;
+}
+
+.control-grid.bottom {
+    padding-top: 15px;
+}
+
+.control-grid .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-around;
+    padding-right: 10px;
+}
+
+.control-grid .buttons .btn {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: stretch;
+}
+
+.control-grid .buttons .btn * {
+    flex: 1 0 auto;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 1.5;
+    padding: 0px 5px;
+}
+
+.control-grid .buttons .btn .glyphicon {
+    flex: 0 1 auto;
+    padding: 0px;
+}
 
 @media only screen and (max-width: 1200px) {}
 
 @media only screen and (max-width: 979px) {}
 
-@media only screen and (max-width: 767px) {}
+@media only screen and (max-width: 767px) {
+    .grid-row.grid-header {
+        display: none;
+    }
+
+    .control-grid .buttons {
+        flex-direction: row;
+        justify-content: center;
+    }
+    .control-grid .buttons .btn {
+        margin: 5px;
+    }
+    .control-grid.top {
+        flex-direction: column;
+    }
+    .control-grid.top .buttons {
+        margin-bottom: 15px;
+    }
+    .control-grid.bottom {
+        flex-direction: column-reverse;
+    }
+    .control-grid.bottom .buttons {
+        margin-top: 15px;
+    }
+}
 
 @media only screen and (max-width: 480px) {}
 
-@media only screen and (max-width: 320px) {}
+@media only screen and (max-width: 320px) {
+    .container-fluid.contatos {
+        padding: 0px 5px;
+    }
+}
