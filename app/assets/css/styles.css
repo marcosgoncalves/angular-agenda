@@ -15,7 +15,6 @@
 	margin: 0px;
 	margin-top: -43px;
 	margin-right: -4px;
-	z-index: 500;
 	border: solid 1px #dc3545;
 	color: #fff;
 	border-radius: 0.2rem;
@@ -39,6 +38,9 @@
 .ng-invalid.ng-touched.ng-not-empty.ng-invalid-pattern+span::after {
 	content: 'Formato inválido';
 }
+.ng-invalid.ng-touched.ng-not-empty.invalid-in-list+span::after {
+	content: 'Não pertence a lista';
+}
 
 /* form-control form-control-sm ng-pristine ng-scope ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched */
 
@@ -55,8 +57,10 @@ body {
 }
 
 .nav-bar {
+	position: sticky;
 	flex-shrink: 0;
 	box-shadow: 0px 0px 5px #888;
+	z-index: 1;
 }
 
 .main-view {

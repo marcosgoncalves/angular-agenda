@@ -1,3 +1,6 @@
+.btn .glyphicon {
+    position: initial;
+}
 .control-grid {
     display: flex;
     justify-content: flex-end;
@@ -10,6 +13,11 @@
 
 .control-grid.bottom {
     padding-top: 15px;
+}
+
+.grid-row.grid-header {
+    position: sticky;
+    top: -15px;
 }
 
 .control-grid .buttons {

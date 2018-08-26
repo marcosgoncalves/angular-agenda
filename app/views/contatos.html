@@ -11,7 +11,7 @@
 
 	<h3>contatos</h3>
 
-	<div class="container" ng-show="vm.editing">
+	<div class="container" ng-show="vm.editing" ng-init="vm.editing=null">
 
 		<div id="frmTitle" class="form-row">
 			<h5>{{ !vm.editing ? '' : vm.editing.idx
@@ -21,9 +21,9 @@
 		<form name="vm.frmContato" class="form" ng-disabled="{{true}}" ng-model="vm.editing"
 		    ng-include src="'/views/includes/contato-form.html'"></form>
 
-		<div class="text-right">
-			<button id="btnSalvar" ng-click="vm.save();" ng-disabled="!vm.editing" type="button"
-			    class="btn btn-primary">salvar</button>
+		<div class="text-right" style="margin-bottom: 15px;">
+			<button id="btnSalvar" ng-disabled="!vm.frmContato.$valid" ng-click="vm.save();"
+			    type="button" class="btn btn-primary">salvar</button>
 			<button ng-click="vm.cancel();" ng-disabled="!vm.editing" type="button" class="btn btn-danger">cancelar</button>
 		</div>
 	</div>

@@ -1,0 +1,105 @@
+[ipt-list] {
+    background-image: url(../img/sort-desc.png);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 5px) 50%;
+}
+[ipt-list].open {
+    background-image: url(../img/sort-asc.png);
+}
+
+
+/* ********************** */
+
+.ipt-list-drop {
+    display: none;
+    flex-direction: column;
+    z-index: 100;
+}
+
+.ipt-list-drop.open {
+    display: flex;
+}
+
+.ipt-list-drop-inner {
+    position: absolute;
+    width: 100%;
+    border: 3px outset #ccc;
+    background-color: #fff;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    display: flex;
+    flex-direction: column;
+}
+
+.ipt-list-drop-scroll {
+    flex: 1 0 auto;
+    padding: 0px;
+    /* max-height: calc(30px * 10); */
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+}
+
+.ipt-list-drop-scroll-ghost {
+    pointer-events: none;
+    background-color: transparent;
+    position: relative;
+    flex: 1 0 auto;
+    padding: 0px;
+    height: calc(30px * 10);
+    display: block;
+    flex-direction: column;
+}
+
+.ipt-list-option-set {
+    pointer-events: none;
+    position: absolute;
+    width: calc(100% - 16px);
+    flex: 1 0 auto;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ipt-list-option {
+    pointer-events: none;
+    flex: 0 0 30px;
+    padding: 0px 5px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+}
+
+.ipt-list-option.hover {
+    background-color: #93b5ff;
+}
+.ipt-list-option.cursor {
+    color: #fff;
+    background-color: #0b2b72;
+}
+
+.ipt-list-option>div {
+    overflow-y: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ipt-list-drop-footer {
+    font-size: 0.7rem;
+    padding: 2px 5px;
+    border-top: 1px solid #909090;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ipt-list-drop-footer .esq {}
+
+.ipt-list-drop-footer .dir {}
+
+.img-loading {
+    display: none;
+    width: 15px;
+    height: 15px;
+}

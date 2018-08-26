@@ -50,6 +50,9 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+.grid-column:active {
+    white-space: normal;
+}
 
 .grid-table.grid-border .grid-row .grid-column {
     border: 1px solid #b2b2b2;

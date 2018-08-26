@@ -29,9 +29,21 @@
                 });
         }
 
+        function getBigNomes() {
+            return $http.get('assets/data-json/big-nomes.json')
+                .then(function (response) {
+                    return response.data;
+                })
+                .catch(function (e) {
+                    clog('UtilService getCidades error response', response);
+                    throw e;
+                });
+        }
+
         return {
             getBaseNomes: getBaseNomes,
-            getCidades: getCidades
+            getCidades: getCidades,
+            getBigNomes: getBigNomes
         };
     }
 })();

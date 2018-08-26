@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="assets-bower/glyphicons/styles/glyphicons.css"
     />
     <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/ipt-list.css" />
 
     <script src="assets/js/script.js"></script>
     <script src="assets/js/loading.js"></script>
@@ -30,6 +31,7 @@
     <script src="assets-bower/bootstrap/dist/js/bootstrap.js"></script>
     <script src="assets-bower/angular-bootstrap/ui-bootstrap.js"></script>
     <script src="assets-bower/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="../bower_components/comps/src/index.js"></script>
 
 
 
@@ -44,6 +46,7 @@
 
     <script src="directive/update-on-enter.directive.js"></script>
     <script src="directive/grid-pager.directive.js"></script>
+    <script src="directive/ipt-list.directive.js"></script>
     <script src="directive/ipt-mask.directive.js"></script>
     <script src="directive/fmt-moeda.directive.js"></script>
 
@@ -51,6 +54,7 @@
     <script src="controller/ContatoController.js"></script>
     <script src="controller/InsertsController.js"></script>
     <script src="controller/InputsController.js"></script>
+    <script src="controller/TabsController.js"></script>
 
 </head>
 
@@ -78,6 +82,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdown09">
                         <a class="dropdown-item" href="#!inputs">Inputs</a>
                         <a class="dropdown-item" href="#!inserts">Gerar Inserts</a>
+                        <a class="dropdown-item" href="#!tabs">Tabs</a>
                     </div>
                 </li>
             </ul>
@@ -92,9 +97,9 @@
         <div ui-view class="uiview"></div>
     </div>
 
-    <nav id="navFooter" class="footer">
+    <!-- <nav id="navFooter" class="footer">
         by Markito
-    </nav>
+    </nav> -->
 
     <div class="page-loading-container">
         <img class="loading-img" src="assets/img/loading.gif">

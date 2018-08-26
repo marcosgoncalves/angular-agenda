@@ -124,10 +124,10 @@
 				})
 				.catch(function (e) {
 					clog('saveContato catch', e);
-					var mErrors = e.data.errors;
+					var mErrors =[];
 					var strMsg = '';
-					if (mErrors) {
-						mErrors = mErrors.sort(function (a, b) {
+					if (e.data.errors) {
+						mErrors = e.data.errors.sort(function (a, b) {
 							if (a.field < b.field) return -1;
 							if (a.field > b.field) return 1;
 							return 0;
@@ -139,13 +139,13 @@
 					} else {
 						strMsg = 'Ocorreu um erro: ' + '\n' + e.data.message;
 					}
-					alert(strMsg);
+					window.alert(strMsg);
 				});
 		}
 
 		function remove(contato, idx) {
 			clog('remove', contato);
-			if (!contato || !confirm('Deseja excluir o contato?')) {
+			if (!contato || !window.confirm('Deseja excluir o contato?')) {
 				return;
 			}
 			AgendaService.deleteContato(contato).then(function () {
@@ -274,17 +274,17 @@
 		}
 
 		angular.element(document).ready(function () {
-			clog('ContatoController ready');
+			clog('ContatoController ready', [1, 2, 3], {}, window);
 			loadContatos();
 			updateSortControlls();
 			setupTooltips();
 			setupEllipsis();
-			vm.novo();
+			// vm.novo();
 
-			vm.editing.endereco = {
-				estado: 'SP'
-			};
-			vm.estadoChange();
+			// vm.editing.endereco = {
+			// 	estado: 'SP'
+			// };
+			// vm.estadoChange();
 
 			$('#cidadeDataList')[0].onSelect = function (e) {
 				clog('cidadeDataList onselect', e);

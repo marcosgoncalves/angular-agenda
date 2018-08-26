@@ -1,4 +1,4 @@
-Loading = (function () {
+var Loading = (function () {
     var parallelsCount = 0,
         quiet = false;
 

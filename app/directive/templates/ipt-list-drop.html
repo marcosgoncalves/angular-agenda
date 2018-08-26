@@ -1,0 +1,26 @@
+<div class="ipt-list-drop">
+	<div class="ipt-list-drop-inner">
+		<div class="ipt-list-drop-scroll">
+			<div class="ipt-list-option-set">
+				<div class="ipt-list-option" 
+					ng-repeat="item in dataList track by $index" data-index="{{$index}}" value="{{value ? item[value] : item}}">
+					<div>
+						<!-- {{listStart + 1 +$index}} - -->
+						{{text ? item[text] : item}}
+					</div>
+				</div>
+			</div>
+			<div class="ipt-list-drop-scroll-ghost">
+			</div>
+		</div>
+		<div class="ipt-list-drop-footer">
+			<div class="esq">
+				Exibindo {{vm.listStart+1}} até {{vm.listEnd}} de {{dataFiltredList.length}}
+			</div>
+			<div class="dir">
+				<img class="img-loading" src="assets/img/loading-sm.gif">
+			</div>
+		</div>
+		<!-- <div>{{data}}</div> -->
+	</div>
+</div>

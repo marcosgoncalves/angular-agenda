@@ -249,7 +249,7 @@
 
 	molude.filter('moeda', function () {
 		return function (val, decimalPlaces) {
-			if (isNaN(val) || val === '' || val === undefined) {
+			if (isNaN(val) || val === '') {
 				return '';
 			}
 			decimalPlaces = Number(decimalPlaces !== 0 && !decimalPlaces ? defaultDecimalPlaces : decimalPlaces);

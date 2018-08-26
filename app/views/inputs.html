@@ -48,6 +48,59 @@
 	<form name="vm.frmInputs" ng-model="vm.frmInputs">
 		<div class="grup">
 			<div class="cell">
+				<label class="lbl">input list BIG</label>
+			</div>
+			<div class="cell">
+				<div>
+					<input ipt-list="iptListDropBig" required ng-model="iptListBig" name="iptListBig"
+					    ng-init="iptListBig = ''" class="form-control form-control-sm" ng-change="iptListBig2=iptListBig"
+					/>
+					<span></span>
+					<ipt-list-drop id="iptListDropBig" data="vm.bigList" value="index" text="name"
+					/>
+				</div>
+				<div>ng-model: {{iptListBig}}</div>
+				<div>ng-change: {{iptListBig2}}</div>
+				<!-- <div>{{vm.cidadesList['SP']}}</div> -->
+			</div>
+		</div>
+		<div class="grup">
+			<div class="cell">
+				<label class="lbl">input list</label>
+			</div>
+			<div class="cell">
+				<div>
+					<input ipt-list="iptListDrop" required ng-model="iptList" name="iptList" ng-init="iptList = ''"
+					    class="form-control form-control-sm" ng-change="iptList2=iptList" />
+					<span></span>
+					<ipt-list-drop id="iptListDrop" data="vm.cidadesList['SP']" />
+				</div>
+				<div>ng-model: {{iptList}}</div>
+				<div>ng-change: {{iptList2}}</div>
+				<!-- <div>{{vm.cidadesList['SP']}}</div> -->
+			</div>
+		</div>
+		<div class="grup">
+			<div class="cell">
+				<label class="lbl">input listX</label>
+			</div>
+			<div class="cell">
+				<div>
+					<input ipt-list="iptListDropX" required ng-model="iptListX" name="iptListX"
+					    ng-init="iptListX = ''" class="form-control form-control-sm" ng-change="iptListX2=iptListX"
+					/>
+					<span></span>
+					<ipt-list-drop id="iptListDropX" data="vm.estadoList" value="Sigla" text="Nome"
+					/>
+				</div>
+				<div>ng-model: {{iptListX}}</div>
+				<div>ng-change: {{iptListX2}}</div>
+				<!-- <div>{{vm.estadoList}}</div> -->
+			</div>
+		</div>
+
+		<div class="grup">
+			<div class="cell">
 				<label class="lbl">mask moeda</label>
 			</div>
 			<div class="cell">

@@ -70,7 +70,36 @@
 			.state('inputs', {
 				url: '/inputs',
 				templateUrl: './views/inputs.html',
-				controller: 'InputsController as vm'
+				controller: 'InputsController as vm',
+				resolve: {
+					resolveResult: ['$q', 'UtilService', 'AgendaService', function ($q, UtilService, AgendaService) {
+						return $q.all([
+							UtilService.getBaseNomes(),
+							AgendaService.getEstados(),
+							UtilService.getCidades(),
+							UtilService.getBigNomes()
+						]).then(function (resp) {
+							return {
+								baseNomes: resp[0],
+								estados: resp[1],
+								cidades: resp[2],
+								bigList: resp[3].items
+							};
+						}).catch(function () {
+							return {
+								baseNomes: [],
+								estados: [],
+								cidades: {},
+								bigList: []
+							};
+						});
+					}]
+				}
+			})
+			.state('tabs', {
+				url: '/tabs',
+				templateUrl: './views/tabs.html',
+				controller: 'TabsController as vm'
 			});
 	}
 

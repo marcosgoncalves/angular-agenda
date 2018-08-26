@@ -9,7 +9,7 @@
 
     function Controller($scope, $rootScope) {
         angular.element(document).ready(function () {
-            clog('BodyController ready');
+            // clog('BodyController ready');
 
             // $('#dropUltimos').click().blur();
 

@@ -22,7 +22,8 @@
 /* */
 
 var gulp = require('gulp'),
-	connect = require('gulp-connect');
+	connect = require('gulp-connect'),
+	watch = require('gulp-watch');
 
 gulp.task('serve', function () {
 	connect.server({
@@ -30,6 +31,11 @@ gulp.task('serve', function () {
 		host: '0.0.0.0',
 		port: 41125
 	});
+});
+
+gulp.task('wcomps', function() {
+	return watch('../comps/src/**', { ignoreInitial: false })
+	.pipe(gulp.dest('bower_components/comps/src'));
 });
 
 gulp.task('default', gulp.series('serve'));
