@@ -35,7 +35,7 @@ gulp.task('serve', function () {
 
 gulp.task('wcomps', function() {
 	return watch('../comps/src/**', { ignoreInitial: false })
-	.pipe(gulp.dest('bower_components/comps/src'));
+	.pipe(gulp.dest('app/assets-bower/comps/src'));
 });
 
 gulp.task('default', gulp.series('serve'));

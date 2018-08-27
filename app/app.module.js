@@ -4,7 +4,8 @@
         .module('AgendaApp', [
             'ui.router',
             'ui.bootstrap',
-            'angular.filter'
+            'angular.filter',
+            'compsApp'
             // 'ui.bootstrap.tooltip',
             // 'ui.bootstrap.popover',
             // "ui.bootstrap.tpls",

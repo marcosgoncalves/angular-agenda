@@ -31,9 +31,11 @@
     <script src="assets-bower/bootstrap/dist/js/bootstrap.js"></script>
     <script src="assets-bower/angular-bootstrap/ui-bootstrap.js"></script>
     <script src="assets-bower/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="../bower_components/comps/src/index.js"></script>
 
-
+    <script src="assets-bower/comps/src/index.js"></script>
+    <script src="assets-bower/comps/src/tabs/tabs-service.js"></script>
+    <script src="assets-bower/comps/src/tabs/tabs-controller.js"></script>
+    <script src="assets-bower/comps/src/tabs/tabs-component.js"></script>
 
     <script src="app.module.js"></script>
     <script src="app.constants.js"></script>
@@ -45,6 +47,9 @@
     <script src="service/AgendaService.js"></script>
 
     <script src="directive/update-on-enter.directive.js"></script>
+    
+    <script src="filter/json.filter.js"></script>
+
     <script src="directive/grid-pager.directive.js"></script>
     <script src="directive/ipt-list.directive.js"></script>
     <script src="directive/ipt-mask.directive.js"></script>
@@ -54,7 +59,7 @@
     <script src="controller/ContatoController.js"></script>
     <script src="controller/InsertsController.js"></script>
     <script src="controller/InputsController.js"></script>
-    <script src="controller/TabsController.js"></script>
+    <script src="controller/TabsCallController.js"></script>
 
 </head>
 
@@ -76,13 +81,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#!contatos">Contatos</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!tabs">Tabs</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a href="javascript: void();" class="nav-link dropdown-toggle" id="dropUltimos"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Opções</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown09">
                         <a class="dropdown-item" href="#!inputs">Inputs</a>
                         <a class="dropdown-item" href="#!inserts">Gerar Inserts</a>
-                        <a class="dropdown-item" href="#!tabs">Tabs</a>
                     </div>
                 </li>
             </ul>

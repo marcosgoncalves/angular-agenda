@@ -1,0 +1,41 @@
+.tabs-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.tabs-container .tabs-row {
+    background-color: #f2f2f2;
+    padding: 0 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+.tabs-container .tabs-row .tab {
+    cursor: pointer;
+    border-radius: 5px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background-color: #d1d1d1;
+    margin: 0px;
+    margin-left: 5px;
+    padding: 5px 10px;
+    user-select: none;
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
+}
+.tabs-container .tabs-row .tab.wrapped {
+    margin-top: 5px;
+}
+.tabs-container .tabs-row .tab.active {
+    cursor: default;
+    background-color: #808080;
+    color: #fff;
+}
+
+.tabs-body {
+    display: none;
+}

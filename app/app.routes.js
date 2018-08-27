@@ -98,8 +98,8 @@
 			})
 			.state('tabs', {
 				url: '/tabs',
-				templateUrl: './views/tabs.html',
-				controller: 'TabsController as vm'
+				templateUrl: './views/tabs-call.html',
+				controller: 'TabsCallController as vm'
 			});
 	}
 
