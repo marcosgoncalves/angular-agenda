@@ -24,7 +24,7 @@
             id: 'tabsId1',
             active: 0,
             tabs: [{
-                text: 'tab 1.1 sdfasdfasdfsadf asdf asdf asdf ',
+                text: 'tab 1.1',
                 clickCallback: tab11ClickHandler,
                 url: 'views/tab1.1.html',
                 scope: $scope
@@ -34,7 +34,7 @@
                 url: 'views/tab1.2.html',
                 scope: $scope
             }, {
-                text: 'tab 1.3',
+                text: 'tab 1.3 sd asdf sadf asdf asdf asd asdf',
                 clickCallback: tab12ClickHandler,
                 url: 'views/tab1.3.html',
                 scope: $scope
