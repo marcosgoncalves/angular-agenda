@@ -1,13 +1,16 @@
 <link rel="stylesheet" href="assets-bower/comps/src/tabs/tabs.css" />
 <div class="tabs-container">
-    <div class="tabs-row">
-        <div class="tab"
-            ng-class="{active: vm.config.active == $index}"
-            ng-repeat="tab in vm.config.tabs"
-            ng-click="vm.tabClickHandler($index)">
-            {{tab.text}}
+    <div class="tabs-inner">
+        <div class="tabs-row">
+            <div
+                class="tab"
+                ng-class="{active: vm.config.active == $index}"
+                ng-repeat="tab in vm.config.tabs"
+                ng-click="vm.tabClickHandler($index)">
+                {{tab.text}}
+            </div>
         </div>
     </div>
 </div>
 
-<div class="tabs-body"><div ng-include></div></div>
+<div class="tabs-body"></div>

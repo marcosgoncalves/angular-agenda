@@ -24,7 +24,7 @@
             id: 'tabsId1',
             active: 0,
             tabs: [{
-                text: 'tab 1.1',
+                text: 'tab 1.1 sdfasdfasdfsadf asdf asdf asdf ',
                 clickCallback: tab11ClickHandler,
                 url: 'views/tab1.1.html',
                 scope: $scope
@@ -61,21 +61,23 @@
             }]
         };
 
-        vm.addTab = function () {
-            vm.tabs1.tabs.push({
-                text: 'tab 1.' + (vm.tabs1.tabs.length+1),
+        vm.addTab = function (tabs) {
+            tabs.add({
+                text: 'nova tab ' + (tabs.tabs.length+1),
                 clickCallback: function(idx) {
                     clog('clickCallback', idx);
                 },
-                url: 'views/tab1.' + (vm.tabs1.tabs.length+1) + '.html',
+                url: 'views/tab1.' + (tabs.tabs.length+1) + '.html',
                 scope: $scope
             });
         };
 
         angular.element(document).ready(function () {
-            for(var i=0; i < 20; i++) {
-                vm.addTab();
-            }
+            setTimeout(function() {
+                for(var i=0; i < 18; i++) {
+                    vm.addTab(vm.tabs2);
+                }
+            }, 1);
         });
     }
 })();

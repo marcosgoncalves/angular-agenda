@@ -1,14 +1,23 @@
-tabs-call
 
+<style>
+#tabs2Body {
+    margin-top: 10px;
+    background-color: aquamarine;
+}
+</style>
 <div class="container">
-    <button ng-click="vm.tabs1.go(0)">tab1</button>
-    <button ng-click="vm.tabs1.go(1)">tab2</button>
-    <button ng-click="vm.addTab()">add</button>
+    <h1>tabs-call</h1>
+    <p>
+        <button ng-click="vm.tabs1.go(0)">tab1</button>
+        <button ng-click="vm.tabs1.go(1)">tab2</button>
+        <button ng-click="vm.addTab(vm.tabs1)">add tab</button>
+    </p>
     <div>
         <tabs id="tabs1" config="vm.tabs1"></tabs>
     </div>
     <div id="tabs1Body"></div>
 
+    <p>&nbsp;</p>
 
     <div>
         <tabs id="tabs2" config="vm.tabs2"></tabs>
