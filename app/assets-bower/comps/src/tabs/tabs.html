@@ -3,12 +3,15 @@
     <div class="tabs-inner">
         <div class="tabs-row">
             <div
-                class="tab"
-                ng-class="{active: vm.config.active == $index}"
                 ng-repeat="tab in vm.config.tabs"
-                ng-click="vm.tabClickHandler($index)">
+                class="tab"
+                ng-style="{'z-index': vm.zIndex($index)}"
+                ng-class="{active: vm.config.active == $index, before: $index < vm.config.active, after: $index > vm.config.active}"
+                ng-click="vm.tabClickHandler($index)"
+            >
                 {{tab.text}}
             </div>
+            <div class="tab"></div>
         </div>
     </div>
 </div>

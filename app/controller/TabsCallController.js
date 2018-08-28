@@ -22,7 +22,7 @@
 
         vm.tabs1 = {
             id: 'tabsId1',
-            active: 0,
+            active: 1,
             tabs: [{
                 text: 'tab 1.1',
                 clickCallback: tab11ClickHandler,
@@ -47,7 +47,7 @@
         };
         vm.tabs2 = {
             id: 'tabsId2',
-            active: 1,
+            active: 4,
             tabs: [{
                 text: 'tab 2.1',
                 clickCallback: tab11ClickHandler,
@@ -61,23 +61,29 @@
             }]
         };
 
-        vm.addTab = function (tabs) {
-            tabs.add({
-                text: 'nova tab ' + (tabs.tabs.length+1),
-                clickCallback: function(idx) {
+        vm.makeTab = function (tabs) {
+            return {
+                text: 'nova tab ' + (tabs.tabs.length + 1),
+                clickCallback: function (idx) {
                     clog('clickCallback', idx);
                 },
-                url: 'views/tab1.' + (tabs.tabs.length+1) + '.html',
+                url: 'views/tab1.' + (tabs.tabs.length + 1) + '.html',
                 scope: $scope
-            });
+            };
         };
 
+        vm.addTab = function (tabs) {
+            vm.addTabs(tabs, vm.makeTab(tabs));
+        };
+        vm.addTabs = function (tabs, newTabs) {
+            tabs.tabs = tabs.tabs.concat(newTabs);
+        };
+
+        for (var i = 0; i < 18; i++) {
+            vm.addTabs(vm.tabs2, vm.makeTab(vm.tabs2));
+        }
+
         angular.element(document).ready(function () {
-            setTimeout(function() {
-                for(var i=0; i < 18; i++) {
-                    vm.addTab(vm.tabs2);
-                }
-            }, 1);
         });
     }
 })();

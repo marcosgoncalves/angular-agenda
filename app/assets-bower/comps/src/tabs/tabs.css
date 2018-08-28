@@ -9,40 +9,77 @@
     display: flex;
     flex-direction: column;
     overflow: auto;
+    background-color: #f2f2f2;
 }
 
 .tabs-container .tabs-row {
-    background-color: #f2f2f2;
     padding: 0 15px;
     margin-top: -5px;
     margin-left: -5px;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: stretch;
 }
+
+.tabs-container .tabs-row .tab.animate {
+    transition: color 0.5s, border-color 0.5s, background-color 0.8s;
+}
+
 .tabs-container .tabs-row .tab {
     /* flex-grow: 1; */
     cursor: pointer;
     border-radius: 10px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
+    color: #202020;
+    border: 1px solid #808080;
+    border-bottom: 3px solid #707070;
     background-color: #d1d1d1;
     margin: 0px;
     margin-top: 5px;
     margin-left: 5px;
     padding: 5px 15px;
     user-select: none;
-    display: flex;
+    display: block;
     flex-direction: row;
     white-space: nowrap;
     justify-content: center;
 }
 
+.tabs-container .tabs-row .tab.before {
+    margin-right: -10px;
+    z-index: 1;
+    box-shadow: -3px 0px 2px 1px rgba(130, 130, 130, 0.35);
+}
+
+.tabs-container .tabs-row .tab.after {
+    margin-right: -10px;
+    z-index: 1;
+    box-shadow: 3px 0px 2px 1px rgba(130, 130, 130, 0.35);
+}
+
+.tabs-container .tabs-row .tab:last-child {
+    padding: 0 15px 0 0;
+    visibility: hidden;
+}
+
+.tabs-container .tabs-row .tab:hover {
+    z-index: 1000 !important;
+    border-bottom: 3px solid #a8a8a8;
+    box-shadow: -3px 0px 2px 1px rgba(130, 130, 130, 0.35), 3px 0px 2px 1px rgba(130, 130, 130, 0.35);
+}
+
 .tabs-container .tabs-row .tab.active {
+    /* font-size: 1.2em;
+    line-height: 1.2; */
+    border: 1px solid #a8a8a8;
+    border-bottom: 3px solid #a8a8a8;
     cursor: default;
     background-color: #808080;
     color: #fff;
+    margin-right: -10px;
+    box-shadow: -3px 0px 2px 1px rgba(130, 130, 130, 0.35), 3px 0px 2px 1px rgba(130, 130, 130, 0.35);
 }
 
 .tabs-body {

@@ -57,17 +57,37 @@
 			}
 		};
 
-		angular.element(document).ready(function () {
+		vm.zIndex = function (idx) {
+			if (idx < vm.config.active) {
+				return idx;
+			} else if (idx > vm.config.active) {
+				return vm.config.tabs.length - idx;
+			} else {
+				return vm.config.tabs.length + 1000;
+			}
+		};
 
+		this.$onInit = function () {
+			vm.config.init = function () {
+				if (vm.config.active || vm.config.active === 0) {
+					vm.tabClickHandler(vm.config.active);
+				}
+			};
 			vm.config.go = function (idx) {
 				vm.tabClickHandler(idx);
 			};
-			vm.config.add = function (tab) {
-				vm.config.tabs.push(tab);
+			vm.config.add = function (tabs) {
+				clog('tabs', tabs);
+				vm.config.tabs = vm.config.tabs.concat(tabs);
+				clog('vm.config.tabs', vm.config.tabs);
+				$scope.$apply();
 			};
-
-			vm.tab = vm.config.tabs[vm.config.active];
-			vm.tabClickHandler(vm.config.active);
+			// setTimeout(function () {
+				vm.config.init();
+			// }, 1);
+		};
+		angular.element(document).ready(function () {
+			$('#' + vm.id + ' .tabs-container .tabs-row .tab').addClass('animate');
 		});
 	}
 
